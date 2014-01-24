@@ -49,6 +49,20 @@ def print_subscriptions(stage, *args):
         print_category(stage.subscriptions, indent)
 
 
+def print_entries(stage, index, *args):
+    if index not in SUBSCRIPTIONS:
+        print('subscription ID not found.', file=sys.stderr)
+
+    subs = SUBSCRIPTIONS[index]
+    feed_id = subs.feed_id
+    with stage:
+        feed = stage.feeds[feed_id]
+
+    print(feed.title)
+    for i in range(20):
+        print('{0:2} {1}'.format(i, feed.entries[i]))
+
+
 def read_loop(stage):
     commands = {
         'exit': quit,
@@ -59,6 +73,11 @@ def read_loop(stage):
         args = shlex.split(raw_input(PROMPT))
 
         if not args:
+            continue
+
+        if args[0].startswith(SUBSCRIPTION_PREFIX):
+            index = int(args[0][1:])
+            print_entries(stage, index)
             continue
 
         if args[0] not in commands:
