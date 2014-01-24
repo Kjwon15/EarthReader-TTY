@@ -20,6 +20,11 @@ def quit(stage, *args):
 
 def print_subscriptions(stage, *args):
     def add_to_subscriptions(subscription):
+        is_exists = [index for (index, value) in SUBSCRIPTIONS.items()
+                     if value == subscription]
+        if is_exists:
+            return is_exists[0]
+
         index = max(SUBSCRIPTIONS.keys()) + 1
         SUBSCRIPTIONS[index] = subscription
         return index
