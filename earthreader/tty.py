@@ -1,5 +1,8 @@
 from __future__ import print_function
 import shlex
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 from libearth.repository import from_url
 from libearth.session import Session
