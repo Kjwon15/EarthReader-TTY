@@ -8,7 +8,8 @@ from libearth.repository import from_url
 from libearth.session import Session
 from libearth.stage import Stage
 
-ITEM_PREFIX = '$'
+SUBSCRIPTION_PREFIX = '$'
+SUBSCRIPTIONS = {0: 'all'}
 PROMPT = '>'
 
 
@@ -18,15 +19,28 @@ def quit(stage, *args):
 
 
 def print_subscriptions(stage, *args):
-    def print_category(subscriptions, indent, depth=0):
+    def add_to_subscriptions(subscription):
+        index = max(SUBSCRIPTIONS.keys()) + 1
+        SUBSCRIPTIONS[index] = subscription
+        return index
+
+    def print_category(subscriptions, indent, depth=1):
         for (title, category) in subscriptions.categories.items():
-            print('{0}{1}'.format(indent*depth, title))
+            index = add_to_subscriptions(category)
+            print('{0}{1} {2}'.format(indent*depth,
+                                      SUBSCRIPTION_PREFIX + str(index),
+                                      title))
             print_category(category, indent, depth=depth+1)
         for subs in subscriptions.subscriptions:
-            print('{0}{1}'.format(indent*depth, subs.label))
+            index = add_to_subscriptions(subs)
+            print('{0}{1} {2}'.format(indent*depth,
+                                      SUBSCRIPTION_PREFIX + str(index),
+                                      subs.label))
 
     indent = '+---'
     with stage:
+        print('{0} {1}'.format(SUBSCRIPTION_PREFIX + str(0),
+                              SUBSCRIPTIONS[0]))
         print_category(stage.subscriptions, indent)
 
 
