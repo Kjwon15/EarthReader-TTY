@@ -14,9 +14,23 @@ def quit(stage, *args):
     exit(0)
 
 
+def print_subscriptions(stage, *args):
+    def print_category(subscriptions, indent, depth=0):
+        for (title, category) in subscriptions.categories.items():
+            print('{0}{1}'.format(indent*depth, title))
+            print_category(category, indent, depth=depth+1)
+        for subs in subscriptions.subscriptions:
+            print('{0}{1}'.format(indent*depth, subs.label))
+
+    indent = '+---'
+    with stage:
+        print_category(stage.subscriptions, indent)
+
+
 def read_loop(stage):
     commands = {
         'exit': quit,
+        'subscriptions': print_subscriptions,
     }
 
     while 1:
