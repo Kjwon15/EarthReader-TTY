@@ -7,7 +7,11 @@ except ImportError:
     import ConfigParser as configparser
 import os
 import sys
-import urlparse
+try:
+    from urllib import parse as urlparse
+except ImportError:
+    import urlparse
+
 
 from . import tty
 from libearth.session import Session
