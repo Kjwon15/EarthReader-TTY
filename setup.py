@@ -29,8 +29,8 @@ setup(
     description='Earth Reader for TTY',
     long_description=readme(),
     url='http://earthreader.org/',
-    author='Earth Reader team',
-    author_email='earthreader' '@' 'librelist.com',
+    author='Kjwon15',
+    author_email='kjwonmail' '@' 'gmail.com',
     license='AGPLv3 or later',
     entry_points={
         'console_scripts': [
@@ -43,5 +43,5 @@ setup(
         'https://github.com/earthreader/libearth/archive/master.zip'
         '#egg=libearth-dev'
     ],
-    download_url='https://github.com/earthreader/tty/releases',
+    download_url='https://github.com/Kjwon15/EarthReader-TTY/releases',
 )

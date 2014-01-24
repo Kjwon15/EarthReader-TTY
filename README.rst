@@ -15,7 +15,7 @@ You can install Earth Reader for TTY using ``pip``:
 
 .. code-block:: console
 
-   $ pip install git+git://github.com/earthreader/tty.git
+   $ pip install git+git://github.com/Kjwon15/EarthReader-TTY.git
 
 
 Links
@@ -28,7 +28,7 @@ libearth
    http://github.com/earthreader/libearth/
 
 Git repository (GitHub)
-   http://github.com/earthreader/tty/
+   http://github.com/Kjwon15/EarthReader-TTY/
 
 Issue tracker (GitHub)
-   http://github.com/earthreader/tty/issues/
+   http://github.com/Kjwon15/EarthReader-TTY/issues/
