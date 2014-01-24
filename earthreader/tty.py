@@ -9,7 +9,7 @@ ITEM_PREFIX = '$'
 PROMPT = '>'
 
 
-def quit(*args):
+def quit(stage, *args):
     print('Bye bye')
     exit(0)
 
@@ -29,7 +29,7 @@ def read_loop(stage):
             print('Command not found')
             continue
 
-        commands[args[0]](*args[1:])
+        commands[args[0]](stage, *args[1:])
 
 
 def main(args):
